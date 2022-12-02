@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        h1 {
+            text-align:center;
+            background-color: cyan;
+        }
+        .btn {
+            width: 100%;
+        }
+        table{
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid;
+        }
+        th{
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employees List</h1>
+    <div class="container">
+        <h2>Employees</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Date of Birth</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Hire Date</th>
+                <th>Hourly Rate</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="p:${employeelist}">
+                    <td th:text="${p.employeeId}"></td>
+                    <td th:text="${p.dob}"></td>
+                    <td th:text="${p.firstname}"></td>
+                    <td th:text="${p.lastname}"></td>
+                    <td th:text="${p.gender}"></td>
+                    <td th:text="${p.hireDate}"></td>
+                    <td th:text="${p.hourRate}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

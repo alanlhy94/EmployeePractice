@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <title>Add a New Employee to the list</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Add Employee detail to the system:</h1>
+  <form method="POST">
+    <fieldset class="form-group">
+      <label> Employee ID :</label>
+      <input name="employeeId" type="text" class="form-control" required />
+    </fieldset>
+    <fieldset class="form-group">
+      <label> Employee Date of Birth :</label>
+      <input name="dob" type="text" class="form-control" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label> Employee First Name :</label>
+      <input name="firstname" type="text" class="form-control" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label> Employee Last Name :</label>
+      <input name="lastname" type="text" class="form-control" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label> Employee Gender :</label>
+      <input name="gender" type="text" class="form-control" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label> Employee Hire Date :</label>
+      <input name="hireDate" type="text" class="form-control" required />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label> Employee Hourly Rate :</label>
+      <input name="hourRate" type="text" class="form-control" required />
+    </fieldset>
+    <input class="btn btn-success" type="submit" value="Submit" />
+  </form>
+</div>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
