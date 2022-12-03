@@ -104,12 +104,14 @@ public class EmployeeController {
         return "redirect:/";
     }
     @GetMapping("/update-todo")
-    public String showEditPage(ModelMap model, @RequestParam(defaultValue = "")String employeeId)throws SQLException{
-        model.put("id", employeeId);
-        List<Map<String, Object>> x = dao.getEmp(employeeId);
+    public String showEditPage(ModelMap model, @RequestParam(defaultValue = "")String id)throws SQLException{
+        //Parameter must use the same name("id") as in index.html
+        model.put("id", id);
+        //This one also must use the same name("id") as in index.html
+        List<Map<String, Object>> x = dao.getEmp(id);
 
         x.forEach(rowMap ->{
-            Integer iid = (Integer) rowMap.get("employeeId");
+            String iid = (String) rowMap.get("employeeId");
             Date ddob = (Date) rowMap.get("dob");
             String ffirstName = (String) rowMap.get("firstName");
             String llastName = (String) rowMap.get("lastName");
@@ -131,8 +133,7 @@ public class EmployeeController {
     @PostMapping("/update-todo")
     public String editEmpPage(ModelMap model, @RequestParam("employeeId") String employeeId, @RequestParam("dob") String dob, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName,
                               @RequestParam("gender") String gender, @RequestParam("hireDate") String hireDate, @RequestParam("hourRate") Double hourRate) throws ClassNotFoundException, SQLException, ParseException {
-
-        Integer iid = (Integer)model.get("id");
+        String iid= (String)model.get("id");
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date dob1 = format.parse(dob);
         Date hiredate2 = format.parse(hireDate);
@@ -150,9 +151,8 @@ public class EmployeeController {
         return "redirect:/";
     }
     @GetMapping("/delete-todo")
-    public String deleteEmpPage(ModelMap model, @RequestParam(defaultValue = "")String employeeId){
-        Integer iid = (Integer)model.get(employeeId);
-        dao.deleteData(iid);
+    public String deleteEmpPage(ModelMap model, @RequestParam String id)throws SQLException, ClassNotFoundException{
+        dao.deleteData(id);
         model.clear();
         return "redirect:/";
     }

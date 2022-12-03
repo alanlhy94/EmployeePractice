@@ -40,11 +40,9 @@ public class Empdao {
                 employee.getLastname(), employee.getGender(),employee.getHireDate(), employee.getHourRate());
     }
 
-    public int deleteData(Integer empId){return template.update("delete from emplpoyee where employeeId= ?" , empId);   }
+    public int deleteData(String empId){return template.update("delete from employees where id = ?", empId);}
 
-    public int editData(final Employee employee, int employeeId)
-    {return template.update("update category set employeeId=?, dob=?, firstname = ?, lastname = ?, gender=?, hireDate = ?, hourRate =? where employeeId = ?",
-            employee.getEmployeeId(), employee.getDob(), employee.getFirstname(), employee.getLastname(), employee.getGender(), employee.getHireDate(), employee.getHourRate(), employeeId);}
+    public int editData(final Employee employee, String emp) {return template.update("update employees set id=?, dob=?, firstname = ?, lastname = ?, gender=?, hiredate = ?, hourrate = ? where id = ?", employee.getEmployeeId(), employee.getDob(), employee.getFirstname(), employee.getLastname(), employee.getGender(), employee.getHireDate(), employee.getHourRate(), emp);}
 
     public List<Map<String, Object>> getEmp(String emp){
         return template.queryForList("select * from employees where  id  = ?", emp);
