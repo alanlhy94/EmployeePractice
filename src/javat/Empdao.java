@@ -22,7 +22,7 @@ public class Empdao {
     public List<Employee> display()throws ClassNotFoundException, SQLException{
      return template.query("select*from employees", (RowMapper)(rs, row)->{
         Employee emp = new Employee();
-        emp.setEmployeeId(rs.getInt(1));
+        emp.setEmployeeId(rs.getString(1));
         emp.setDob(rs.getDate(2));
         emp.setFirstname(rs.getString(3));
         emp.setLastname(rs.getString(4));
@@ -46,7 +46,7 @@ public class Empdao {
     {return template.update("update category set employeeId=?, dob=?, firstname = ?, lastname = ?, gender=?, hireDate = ?, hourRate =? where employeeId = ?",
             employee.getEmployeeId(), employee.getDob(), employee.getFirstname(), employee.getLastname(), employee.getGender(), employee.getHireDate(), employee.getHourRate(), employeeId);}
 
-    public List<Map<String, Object>> getEmp(int emp){
+    public List<Map<String, Object>> getEmp(String emp){
         return template.queryForList("select * from employees where  id  = ?", emp);
     }
 

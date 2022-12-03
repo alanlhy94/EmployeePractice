@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 public class Employee {
-    private int employeeId;
+    private String employeeId;
     private Date dob;
     private String firstname;
     private String lastname;
@@ -15,11 +15,11 @@ public class Employee {
     private double hourRate;
     private float totalWorkingHours;
 
-    public int getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 

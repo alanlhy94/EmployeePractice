@@ -58,7 +58,14 @@
                     <td th:text="${p.gender}"></td>
                     <td th:text="${p.hireDate}"></td>
                     <td th:text="${p.hourRate}"></td>
-                    <td><a class="btn btn-success" href="addtodo">Add Emp</a></td>
+                    <td>
+                        <a class="btn btn-primary" href="addtodo">Add Emp</a>
+                        <a class="btn btn-primary"
+                           href="update-todo?id=${todo.employeeId"
+                            th:href="@{update-todo(id=${p.employeeId})}">Update Emp</a>
+                        <a class="btn btn-primary"
+                           th:href="@{delete-todo(id=${p.employeeId})}">Delete Emp</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
