@@ -40,7 +40,7 @@ public class Empdao {
                 employee.getLastname(), employee.getGender(),employee.getHireDate(), employee.getHourRate());
     }
 
-    public int deleteData(String empId){return template.update("delete from emplpoyee where employeeId= ?" , empId);}
+    public int deleteData(Integer empId){return template.update("delete from emplpoyee where employeeId= ?" , empId);   }
 
     public int editData(final Employee employee, int employeeId)
     {return template.update("update category set employeeId=?, dob=?, firstname = ?, lastname = ?, gender=?, hireDate = ?, hourRate =? where employeeId = ?",

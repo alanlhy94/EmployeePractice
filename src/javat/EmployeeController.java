@@ -151,8 +151,9 @@ public class EmployeeController {
     }
     @GetMapping("/delete-todo")
     public String deleteEmpPage(ModelMap model, @RequestParam(defaultValue = "")String employeeId){
-
-
+        Integer iid = (Integer)model.get(employeeId);
+        dao.deleteData(iid);
+        model.clear();
         return "redirect:/";
     }
 }
