@@ -27,7 +27,7 @@ public class Empdao {
         emp.setFirstname(rs.getString(3));
         emp.setLastname(rs.getString(4));
         emp.setGender(rs.getString(5));
-        emp.setHireDate(rs.getDate(6).toLocalDate());
+        emp.setHireDate(rs.getDate(6));
         emp.setHourRate(rs.getDouble(7));
         return emp;
      });
@@ -36,18 +36,18 @@ public class Empdao {
     public Empdao(JdbcTemplate template){this.template = template;}
 
     public int insertData(final Employee employee){
-        return template.update("insert into category values (?,?,?,?,?,?,?)", employee.getEmployeeId(), employee.getDob(),employee.getFirstname(),
+        return template.update("insert into employees values (?,?,?,?,?,?,?)", employee.getEmployeeId(), employee.getDob(),employee.getFirstname(),
                 employee.getLastname(), employee.getGender(),employee.getHireDate(), employee.getHourRate());
     }
 
     public int deleteData(String empId){return template.update("delete from emplpoyee where employeeId= ?" , empId);}
 
-    public int editData(final Employee employee, String employeeId)
+    public int editData(final Employee employee, int employeeId)
     {return template.update("update category set employeeId=?, dob=?, firstname = ?, lastname = ?, gender=?, hireDate = ?, hourRate =? where employeeId = ?",
             employee.getEmployeeId(), employee.getDob(), employee.getFirstname(), employee.getLastname(), employee.getGender(), employee.getHireDate(), employee.getHourRate(), employeeId);}
 
-    public List<Map<String, Object>> getEmp(String emp){
-        return template.queryForList("select * from category where  employeeId = ?", emp);
+    public List<Map<String, Object>> getEmp(int emp){
+        return template.queryForList("select * from employees where  id  = ?", emp);
     }
 
 }

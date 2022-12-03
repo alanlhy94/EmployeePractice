@@ -1,7 +1,8 @@
 package javat;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Employee {
@@ -10,7 +11,7 @@ public class Employee {
     private String firstname;
     private String lastname;
     private String gender;
-    private LocalDate hireDate;
+    private Date hireDate;
     private double hourRate;
     private float totalWorkingHours;
 
@@ -54,11 +55,11 @@ public class Employee {
         this.gender = gender;
     }
 
-    public LocalDate getHireDate() {
+    public Date getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(LocalDate hireDate) {
+    public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
 

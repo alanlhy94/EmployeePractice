@@ -23,12 +23,12 @@
 
     <fieldset class="form-group">
       <label> Employee First Name :</label>
-      <input name="firstname" type="text" class="form-control" required />
+      <input name="firstName" type="text" class="form-control" required />
     </fieldset>
 
     <fieldset class="form-group">
       <label> Employee Last Name :</label>
-      <input name="lastname" type="text" class="form-control" required />
+      <input name="lastName" type="text" class="form-control" required />
     </fieldset>
 
     <fieldset class="form-group">
@@ -46,6 +46,7 @@
       <input name="hourRate" type="text" class="form-control" required />
     </fieldset>
     <input class="btn btn-success" type="submit" value="Submit" />
+    <a class="btn btn-success" th:action="action" type="button" onclick="history.back()">Back</a>
   </form>
 </div>
 <script src="webjars/jquery/1.9.1/jquery.min.js"></script>

@@ -31,6 +31,10 @@
 </head>
 <body>
     <h1>Employees List</h1>
+    <script>
+        document.getElementById("mes").innerHTML = "";
+    </script>
+    <h1 th:text="${errorMessage}" id="mes">Test</h1>
     <div class="container">
         <h2>Employees</h2>
         <table>
@@ -54,6 +58,7 @@
                     <td th:text="${p.gender}"></td>
                     <td th:text="${p.hireDate}"></td>
                     <td th:text="${p.hourRate}"></td>
+                    <td><a class="btn btn-success" href="addtodo">Add Emp</a></td>
                 </tr>
             </tbody>
         </table>
