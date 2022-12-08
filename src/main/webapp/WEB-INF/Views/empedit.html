@@ -4,6 +4,10 @@
     function validation(){
         var f = document.getElementsByTagName("form")
 
+        return(validateEmployeeId(f),
+                validateDob(f),
+                validateFirstName(f))
+
         if(validateEmployeeId(f) == true && validateDob(f) == true && validateFirstName(f) ==true){
             return true
         } return false
@@ -38,17 +42,17 @@
         var error = document.getElementById("dobErrorMessage");
         var dobInput = document.getElementById("dob").value;
 
-        error.innerText = "";
+        error.innerHTML = "";
 
         console.log(dobInput);
 
         if(dobInput == null || dobInput ==""){
             error.append("Please enter your date of birth")
         }
-        else if (dobInput.length < 10){
+        else if (dobInput.length !== 10){
             error.append("Wrong date format for your date of birth")
         }
-        else if (dobInput.substring(4,5) !== "-" || dobInput.substring(7,8) !== "-" ){
+        else if (dobInput.substring(4,5) !== "-" || dobInput.substring(7,8) !== "-"){
             error.append("Please use - to seperate Year-Month-Day")
         }
         if (error.innerHTML.length > 0)
@@ -61,7 +65,7 @@
         var error = document.getElementById("firstnameErrorMessage");
         var firstnameInput = document.getElementById("firstName").value;
 
-        error.innerText = "";
+        error.innerHTML = "";
 
         if(firstnameInput == null || firstnameInput == ""){
             error.append("Please enter your name")
@@ -124,7 +128,7 @@
             <input name="hourRate" type="text" class="form-control" required th:attr="value = ${hourRate}"/>
             <p id="hourRateErrorMessage" style="color: red"></p>
         </fieldset>
-        <input class="btn btn-success" type="submit" onclick="return validation()" value="Submit"/>
+        <input class="btn btn-success" type="submit" onclick="validation()" value="Submit"/>
         <a class="btn btn-success" th:action="action" type="button" onclick="history.back()">Back</a>
     </form>
 </div>
