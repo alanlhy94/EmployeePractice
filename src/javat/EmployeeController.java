@@ -22,7 +22,7 @@ import java.util.Map;
 public class EmployeeController {
 
     @Autowired
-    javat.Empdao dao;
+    Empdao dao;
 
     @GetMapping("/")
     public String showHomePage(ModelMap model) throws ClassNotFoundException, SQLException {
@@ -125,7 +125,7 @@ public class EmployeeController {
             model.put("lastname", llastName);
             model.put("gender", ggender);
             model.put("hireDate", hhireDate);
-            model.put("houtRate", hhourRate);
+            model.put("hourRate", hhourRate);
         });
         return "empedit";
     }

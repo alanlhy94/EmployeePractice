@@ -1,6 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script th:inline="javascript">
+    function validation(){
+        var f = document.getElementsByTagName("form")
+        return (validateEmployeeId(f),
+                validateDob(f));
+    }
+
+    function validateEmployeeId(f) {
+        var error =  document.getElementById("employeeIdErrorMessage")
+        error.innerHTML = ""
+        var idInput = document.getElementById("employeeId").value
+        var intNum = parseInt(idInput)
+
+        console.log(idInput)
+        console.log(intNum)
+
+        if(idInput == null|| idInput == ""){
+            error.append("Please enter Employee ID")
+        }
+        else if(intNum < 1000 ||  intNum > 2000){
+            error.append("Employee ID is from 1000 to 2000")
+        }
+        else if(isNaN(idInput)){
+            error.append("Please enter integer for Employee ID")
+        }
+        if (error.innerHTML.length > 0)
+        return false;
+        else
+        return true;
+    }
+
+    function validateDob(form){
+        var error = document.getElementById("dobErrorMessage");
+        var dobInput = document.getElementById("dob").value;
+
+        console.log(dobInput);
+
+        if(dobInput == null || dobInput ==""){
+            error.append("Please enter your date of birth")
+        }
+        else if (dobInput.length < 10){
+            error.append("Wrong date format for your date of birth")
+        }
+        else if (dobInput.substring(4,5) !== "-" || dobInput.substring(7,8) !== "-" ){
+            error.append("Please use - to seperate Year-Month-Day")
+        }
+        if (error.innerHTML.length > 0)
+            return false;
+        else
+            return true;
+    }
+
+</script>
 <head>
     <title>Edit employee from the list</title>
     <link rel="stylesheet"
@@ -14,38 +66,45 @@
     <form method="POST">
         <fieldset class="form-group">
             <label> Employee ID :</label>
-            <input name="employeeId" type="text" class="form-control" required th:attr="value = ${id}"/>
+            <input name="employeeId" id="employeeId" type="text" class="form-control" required th:attr="value = ${id}"/>
+            <p id="employeeIdErrorMessage" style="color: red"></p>
         </fieldset>
         <fieldset class="form-group">
             <label> Employee Date of Birth :</label>
-            <input name="dob" type="text" class="form-control" required th:attr="value = ${dob}"/>
+            <input name="dob" id="dob" type="text" class="form-control" required th:attr="value = ${dob}"/>
+            <p id="dobErrorMessage" style="color: red"></p>
         </fieldset>
 
         <fieldset class="form-group">
             <label> Employee First Name :</label>
             <input name="firstName" type="text" class="form-control" required th:attr="value = ${firstname}"/>
+            <p id="firstnameErroeMessage" style="color: red"></p>
         </fieldset>
 
         <fieldset class="form-group">
             <label> Employee Last Name :</label>
             <input name="lastName" type="text" class="form-control" required th:attr="value = ${lastname}"/>
+            <p id="lastnameErrorMessage" style="color: red"></p>
         </fieldset>
 
         <fieldset class="form-group">
             <label> Employee Gender :</label>
             <input name="gender" type="text" class="form-control" required th:attr="value = ${gender}"/>
+            <p id="genderErrorMessage" style="color: red"></p>
         </fieldset>
 
         <fieldset class="form-group">
             <label> Employee Hire Date :</label>
             <input name="hireDate" type="text" class="form-control" required th:attr="value = ${hireDate}"/>
+            <p id="hireDateErrorMessage" style="color: red"></p>
         </fieldset>
 
         <fieldset class="form-group">
             <label> Employee Hourly Rate :</label>
             <input name="hourRate" type="text" class="form-control" required th:attr="value = ${hourRate}"/>
+            <p id="hourRateErrorMessage" style="color: red"></p>
         </fieldset>
-        <input class="btn btn-success" type="submit" value="Submit" />
+        <input class="btn btn-success" type="submit" value="Submit" onclick="return validation()"/>
         <a class="btn btn-success" th:action="action" type="button" onclick="history.back()">Back</a>
     </form>
 </div>

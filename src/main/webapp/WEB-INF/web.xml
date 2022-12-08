@@ -20,11 +20,10 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>dispatcher</servlet-name>
     <url-pattern>/</url-pattern>
-    <url-pattern>/category</url-pattern>
+    <url-pattern>/index</url-pattern>
   </servlet-mapping>
 
   <absolute-ordering/>
