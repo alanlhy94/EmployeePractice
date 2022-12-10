@@ -14,7 +14,7 @@ import java.util.Map;
 @Controller
 @RequestMapping
 public class SeatController {
-
+//GitHub Link: https://github.com/alanlhy94/Final_Exam_HoYeungLam_300356233
     @Autowired
     Seatdao dao;
 
