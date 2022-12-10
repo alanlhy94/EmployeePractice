@@ -8,7 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MavenCategory" />
-        <module name="EmployeePractice" />
+        <module name="FinalExam" />
       </profile>
     </annotationProcessing>
   </component>

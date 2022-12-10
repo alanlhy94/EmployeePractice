@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit employee from the list</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <form method="POST">
+        <fieldset class="form-group">
+            <label> Transation Number</label>
+            <input name="id" id="id" type="text" class="form-control" required th:attr="value = ${id}" disabled="true"/>
+        </fieldset>
+        <fieldset class="form-group">
+            <label> Date of Transaction</label>
+            <input name="tdate" id="tdate" type="text" class="form-control" required th:attr="value = ${tdate}"/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Seat Number</label>
+            <input name="seatno" id="seatno" type="text" class="form-control" required th:attr="value = ${seatno}"/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Name</label>
+            <input name="name" id="name" type="text" class="form-control" required th:attr="value = ${name}"/>
+        </fieldset>
+
+        <input class="btn btn-success" type="submit" onclick="validation()" value="Save"/>
+        <a class="btn btn-success" th:action="action" type="button" onclick="history.back()">Back</a>
+    </form>
+</div>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
