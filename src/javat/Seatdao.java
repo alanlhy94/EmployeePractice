@@ -40,7 +40,7 @@ public class Seatdao {
         return template.update("insert into customer values (?,?,?,?)", customer.getId(),customer.getName(), customer.getSeatno(), customer.getTdate());
     }
 
-    public int deleteData(String seatno){return template.update("delete from employees where seatno = ?", seatno);}
+    public int deleteData(int id){return template.update("delete from customer where id = ?", id);}
 
     public int editData(final Customer customer, int id) {return template.update("update customer set id=?, name=?, seatno = ?, tdate = ? where id = ?", customer.getId(), customer.getName(), customer.getSeatno(), customer.getTdate(), id);}
 

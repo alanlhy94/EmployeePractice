@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -55,7 +56,7 @@ public class SeadaoTest {
     public void delete1(){
         when(mocktemplate.update(anyString(),anyString())).thenReturn(1);
 
-        dao.deleteData("101");
+        dao.deleteData(101);
 
         verify(mocktemplate, times(1)).update(anyString(),anyString());
 
@@ -65,7 +66,27 @@ public class SeadaoTest {
 
         verify(mocktemplate).update(strArgs3.capture(), varArgs3.capture());
 
-        assertEquals("101", varArgs3.getAllValues().get(0));
+        assertEquals(101, varArgs3.getAllValues().get(0));
     }
+
+    @Test
+    public void display()throws SQLException, ClassNotFoundException{
+
+        SimpleDateFormat v = new SimpleDateFormat();
+        Customer f = new Customer();
+        f.setId(10);
+        f.setName("Alan");
+        f.setSeatno("3A");
+
+        List<Customer> ll = new ArrayList<Customer>();
+
+        ll.add(f);
+
+        when(mocktemplate.query(anyString(), any(RowMapper.class))).thenReturn(ll);
+        List<Customer>ss1 = dao.display();
+
+        assertEquals(1, ss1.size());
+    }
+
 
 }

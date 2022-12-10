@@ -75,7 +75,7 @@ public class SeatController {
     }
 
     @GetMapping(path = "/delete-todo")
-    public String deleteTodo(ModelMap model, @RequestParam String id) throws SQLException, ClassNotFoundException{
+    public String deleteTodo(ModelMap model, @RequestParam int id) throws SQLException, ClassNotFoundException{
         dao.deleteData(id);
         model.clear();
         return"redirect:/";
